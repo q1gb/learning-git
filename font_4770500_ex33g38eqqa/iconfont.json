@@ -1,0 +1,37 @@
+{
+  "id": "4770500",
+  "name": "考核二",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "732938",
+      "name": "icon_like",
+      "font_class": "iconlike",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "3409618",
+      "name": "Icon_view",
+      "font_class": "Icon_view",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "6393689",
+      "name": "segi-icon-close",
+      "font_class": "segi-icon-close",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "29306618",
+      "name": "icon-menu",
+      "font_class": "icon-menu",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    }
+  ]
+}
