@@ -11,7 +11,7 @@
     <meta name="x5-fullscreen" content="true">
     <!-- iOS适配 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-status-bar-style" content="black-translucent">
     <!-- 视口适配，禁止缩放（关键！） -->
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
@@ -20,39 +20,33 @@
     <link rel="stylesheet" href="../font_4770500_ex33g38eqqa/iconfont.css">
 
     <style>
-        /* 横屏提示遮罩 - 竖屏时全屏拦截 */
-        .rotate-tip {
-            display: none;
+        /* 你要求的竖屏提示样式 */
+        #portrait-tip {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
             background: #000;
-            z-index: 99999;
-            color: #fff;
-            font-size: 24px;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 5vh;
+            z-index: 9999;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* 横屏时：隐藏提示，正常显示页面 */
-        @media (orientation: landscape) {
-            .rotate-tip {
-                display: none !important;
-            }
+        /* 默认隐藏 */
+        #portrait-tip {
+            display: none;
         }
 
-        /* 竖屏时：显示提示，隐藏所有内容 */
-        @media (orientation: portrait) {
-            .rotate-tip {
-                display: flex !important;
+        /* 规则：触摸设备 + 竖屏 + 小屏幕 → 显示 */
+        @media (hover: none) and (pointer: coarse) and (orientation: portrait) and (max-width: 768px) {
+            #portrait-tip {
+                display: flex;
             }
 
-            body>*:not(.rotate-tip) {
+            body>*:not(#portrait-tip) {
                 display: none !important;
             }
         }
@@ -61,8 +55,8 @@
 </head>
 
 <body>
-    <!-- 横屏提示 -->
-    <div class="rotate-tip">
+    <!-- 你要的竖屏提示 -->
+    <div id="portrait-tip">
         <div>请横屏体验</div>
         <div>🔄</div>
     </div>
