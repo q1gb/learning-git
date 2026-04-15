@@ -1,22 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
-      <meta name="screen-orientation" content="landscape">
-  <meta name="x5-orientation" content="landscape">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 安卓/微信强制横屏核心 -->
+    <meta name="screen-orientation" content="landscape">
+    <meta name="x5-orientation" content="landscape">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-fullscreen" content="true">
+    <!-- iOS适配 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- 视口适配，禁止缩放（关键！） -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <title>考核二</title>
     <link rel="stylesheet" href="./考核二.css">
     <link rel="stylesheet" href="../font_4770500_ex33g38eqqa/iconfont.css">
+
+    <style>
+        /* 横屏提示遮罩 - 竖屏时全屏拦截 */
+        .rotate-tip {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 99999;
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 横屏时：隐藏提示，正常显示页面 */
+        @media (orientation: landscape) {
+            .rotate-tip {
+                display: none !important;
+            }
+        }
+
+        /* 竖屏时：显示提示，隐藏所有内容 */
+        @media (orientation: portrait) {
+            .rotate-tip {
+                display: flex !important;
+            }
+
+            body>*:not(.rotate-tip) {
+                display: none !important;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
+    <!-- 横屏提示 -->
+    <div class="rotate-tip">
+        <div>请横屏体验</div>
+        <div>🔄</div>
+    </div>
+
     <!-- head -->
     <div class="head">
-
         <!-- logo -->
         <div class="logo">
             <a href="#"><img src="images/logo-black.svg" alt=""></a>
@@ -32,9 +84,6 @@
             <li><a href="#">Sign up</a></li>
         </ul>
 
-
-
-
         <!-- vue -->
         <div class="vue">
             <ul>
@@ -43,7 +92,6 @@
                 <li><a href="#">Learn Design</a></li>
                 <li><a href="#">Go Pro</a></li>
                 <li><a href="#">Hire Designers</a></li>
-
             </ul>
         </div>
 
@@ -69,11 +117,9 @@
         </div>
     </div>
 
-
     <!-- bd -->
     <div class="bd">
         <ul>
-            <!--  -->
             <li>
                 <div class="pic"><img src="images/cover-01.jpg" alt=""></div>
                 <div class="txt">
@@ -262,7 +308,6 @@
                             <img src="images/avatar-11.jpg" alt="">
                             Odama
                         </div>
-
                     </div>
                     <div class="right">
                         <span class="iconfont icon-iconlike"></span>
@@ -294,8 +339,6 @@
         </ul>
     </div>
 
-
-
     <!-- foot -->
     <div class="foot">
         <div class="logo">
@@ -306,6 +349,7 @@
             and get hired.
         </div>
     </div>
+
     <script src="./flexible.js"></script>
 </body>
 
